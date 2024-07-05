@@ -1,0 +1,48 @@
+<form (ngSubmit)="submitForm()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastro Emissão Periódica</mat-card-title>
+      <mat-card-subtitle>* campos obrigatórios</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Geral">
+          <mat-accordion multi>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informações Gerais
+                </mat-panel-title>
+                <mat-panel-description>
+                  Razão Social, CNPJ, Inscrição Municial, etc
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <app-lookup
+              [controller]="'Prestador'"
+              [name]="'Prestador'"
+              [title]="'Prestador'"
+              [class]="'half-width'"
+              [descriptionPropertie]="'razaoSocial'"
+              [required]='true'
+              [value]="emissaoPeriodica.prestador" (valueChange)="onValueChangePrestador($event);"
+              ></app-lookup>
+              <app-lookup
+              [controller]="'Tomador'"
+              [name]="'Tomador'"
+              [title]="'Tomador'"
+              [class]="'half-width'"
+              [descriptionPropertie]="'razaoSocial'"
+              [required]='true'
+              [value]="emissaoPeriodica.tomador" (valueChange)="onValueChangeTomador($event);"
+              ></app-lookup>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-tab>
+      </mat-tab-group>
+      <mat-card-actions [align]="'end'">
+        <button mat-button routerLink="/lista-registros-prestador" class="button-action">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" class="button-action">Salvar</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  </form>

@@ -1,0 +1,25 @@
+<form (ngSubmit)="submitForm()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Usuário</mat-card-title>
+      <mat-card-subtitle>* Campos Obrigatórios</mat-card-subtitle>
+    </mat-card-header>
+      <mat-card-content>
+  <mat-form-field class="full-width">
+    <mat-label>Usuário</mat-label>
+    <input matInput name="usuario" [(ngModel)]="usuario.userName" required>
+    <mat-error *ngIf="formSubmitted && !usuario.userName">Usuário é obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Senha</mat-label>
+    <input matInput type="password" name="senha" [(ngModel)]="usuario.password" required>
+    <mat-error *ngIf="formSubmitted && !usuario.password">Senha é obrigatória</mat-error>
+  </mat-form-field>
+</mat-card-content>
+<mat-card-actions [align]="'end'">
+  <button mat-button routerLink="/lista-registros-usuarios" class="button-action">Cancelar</button>
+  <button mat-raised-button color="primary" type="submit" class="button-action">Salvar</button>
+</mat-card-actions>
+</mat-card>
+</form>

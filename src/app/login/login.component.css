@@ -1,0 +1,23 @@
+.error-message {
+  color: red;
+}
+
+.full-width {
+  width: 99%;
+  margin-left: 1%;
+}
+
+.one-third-width{
+  width: 74%;
+  margin-left: 1%;
+}
+
+.half-width {
+  width: 49%;
+  margin-left: 1%;
+}
+
+.one-four-width{
+  width: 24%;
+  margin-left: 1%;
+}

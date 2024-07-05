@@ -1,0 +1,21 @@
+<form (ngSubmit)="login()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Se não possuir usuário contate o administrador do sistema</mat-card-subtitle>
+    </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Usuário</mat-label>
+          <input matInput name="username" [(ngModel)]="username" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" name="senha" [(ngModel)]="password" required>
+        </mat-form-field>
+        <span *ngIf="formSubmitted" class="error-message full-width">Usuário ou senha incorretos</span>
+        <br *ngIf="formSubmitted">
+      <button mat-raised-button color="primary" type="submit">Entrar</button>
+    </mat-card-content>
+  </mat-card>
+</form>

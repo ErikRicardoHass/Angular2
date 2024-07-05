@@ -1,0 +1,7 @@
+.sidenav-container {
+  height: 100vh; /* Define a altura do container como 100% da altura da viewport */
+}
+
+.sidenav {
+  height: 100%; /* Define a altura do sidenav como 100% da altura do container */
+}

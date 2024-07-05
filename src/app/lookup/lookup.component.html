@@ -1,0 +1,7 @@
+<mat-form-field class="{{class}}">
+  <mat-label>{{title}}</mat-label>
+  <mat-select name="{{name}}" [(ngModel)]="value" (selectionChange)="onValueChange();" required="{{required}}">
+      <mat-option *ngFor="let item of descriptions; let i = index" value="{{values[i]}}">{{item}}</mat-option>
+  </mat-select>
+  <span *ngIf="formSubmitted && condicao" class="error-message">Este campo é obrigatório</span>
+</mat-form-field>

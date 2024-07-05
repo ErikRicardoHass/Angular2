@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Prestadores de Serviço</mat-card-title>
+    <mat-card-subtitle>
+      <button mat-raised-button color="primary" routerLink="/cadastro">Novo</button>
+    </mat-card-subtitle>
+    <br>
+  </mat-card-header>
+    <mat-card-content>
+      <app-grid [controller]="'Prestador'"
+      [displayedColumnsId]="['razaoSocial', 'cnpj', 'incricaoMunicipal', 'cnae', 'delete']"
+      [displayedColumnsLegend]="['Razão Social', 'CNPJ', 'Inscrição Municipal', 'CNAE', 'delete']"
+      [RouteRowClick]="'cadastro'">
+      </app-grid>
+  </mat-card-content>
+</mat-card>

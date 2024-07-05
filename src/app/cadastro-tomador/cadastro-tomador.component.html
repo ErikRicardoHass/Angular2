@@ -1,0 +1,164 @@
+<form (ngSubmit)="submitForm()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastro do Tomador</mat-card-title>
+      <mat-card-subtitle>* campos obrigatórios</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Geral">
+          <mat-accordion multi>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informações Gerais
+                </mat-panel-title>
+                <mat-panel-description>
+                  Razão Social, CNPJ, Inscrição Municial, etc
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field class="full-width">
+                <mat-label>Razão Social</mat-label>
+                <input matInput name="razaoSocial" [(ngModel)]="empresa.razaoSocial" required>
+                <span *ngIf="formSubmitted && !empresa.razaoSocial" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="half-width">
+                <mat-label>CNPJ</mat-label>
+                <input (keydown)="ajustaCNPJ();" matInput name="CNPJ" [(ngModel)]="empresa.cnpj" [value]="empresa.cnpj" required>
+                <span *ngIf="formSubmitted && !empresa.cnpj" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                  <mat-label>Inscrição Municipal</mat-label>
+                  <input matInput name="inscricaoMunicipal" [(ngModel)]="empresa.incricaoMunicipal">
+              </mat-form-field>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Endereço
+                </mat-panel-title>
+                <mat-panel-description>
+                  Rua, Número, CEP, etc
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field class="one-four-width">
+                <mat-label>CEP</mat-label>
+                <input matInput (blur)="pesquisaCep();" name="cep" [(ngModel)]="empresa.cep" required>
+                <span *ngIf="formSubmitted && !empresa.cep" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="half-width">
+                <mat-label>Rua</mat-label>
+                <input matInput name="rua" [(ngModel)]="empresa.rua" required>
+                <span *ngIf="formSubmitted && !empresa.rua" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                <mat-label>Número</mat-label>
+                <input matInput name="numeroEndereco" [(ngModel)]="empresa.numeroEndereco" required>
+                <span *ngIf="formSubmitted && !empresa.numeroEndereco" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                <mat-label>UF</mat-label>
+                <input matInput name="uf" [(ngModel)]="empresa.uf" required>
+                <span *ngIf="formSubmitted && !empresa.uf" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="half-width">
+                <mat-label>Cidade</mat-label>
+                <input matInput name="cidade" [(ngModel)]="empresa.cidade" required>
+                <span *ngIf="formSubmitted && !empresa.cidade" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                <mat-label>Bairro</mat-label>
+                <input matInput name="bairro" [(ngModel)]="empresa.bairro" required>
+                <span *ngIf="formSubmitted && !empresa.bairro" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-third-width">
+                <mat-label>Complemento</mat-label>
+                <input matInput name="complemento" [(ngModel)]="empresa.complemento">
+                <span *ngIf="formSubmitted && !empresa.complemento" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                <mat-label>IBGE</mat-label>
+                <input matInput name="ibge" [(ngModel)]="empresa.ibge">
+                <span *ngIf="formSubmitted && !empresa.ibge" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-four-width">
+                <mat-label>Siafi</mat-label>
+                <input matInput name="siafi" [(ngModel)]="empresa.siafi">
+                <span *ngIf="formSubmitted && !empresa.siafi" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Contato
+                </mat-panel-title>
+                <mat-panel-description>
+                  E-mail, Telefone, Celular, DDD, etc
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field class="one-four-width">
+                <mat-label>DDD</mat-label>
+                <input matInput name="ddd" [(ngModel)]="empresa.ddd" required>
+                <span *ngIf="formSubmitted && !empresa.ddd" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="one-third-width">
+                <mat-label>Celular</mat-label>
+                <input matInput name="celular" [(ngModel)]="empresa.celular" required>
+                <span *ngIf="formSubmitted && !empresa.celular" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput name="email" [(ngModel)]="empresa.email">
+                <span *ngIf="formSubmitted && !empresa.email" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-tab>
+        <mat-tab label="Informações Tributárias">
+          <mat-accordion multi>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informações Gerais
+                </mat-panel-title>
+                <mat-panel-description>
+                  CNAE, Regime Tributário, Optante ISS Retido, etc
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field class="half-width">
+                <mat-label>Regime Tributário</mat-label>
+                <mat-select name="optanteSimples" [(ngModel)]="empresa.regimeTributario">
+                    <mat-option value="Simples">Simples Nacional</mat-option>
+                    <mat-option value="LP">Lucro Presumido</mat-option>
+                    <mat-option value="LR">Lucro Real</mat-option>
+                </mat-select>
+                <span *ngIf="formSubmitted && !empresa.regimeTributario" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="half-width">
+                <mat-label>CNAE</mat-label>
+                <input matInput name="cnae" [(ngModel)]="empresa.cnae">
+                <span *ngIf="formSubmitted && !empresa.cnae" class="error-message">Este campo é obrigatório</span>
+              </mat-form-field>
+              <mat-form-field class="half-width">
+                <mat-label>Natureza Jurídica</mat-label>
+              <mat-select name="naturezaJuridica" [(ngModel)]="empresa.naturezaJuridica">
+                <mat-option value="MEI">Microempreendedor Individual (MEI)</mat-option>
+                <mat-option value="EI">Empresário/Empresa individual (EI)</mat-option>
+                <mat-option value="EIRELI">Empresa Individual de Responsabilidade Limitada (EIRELI)</mat-option>
+                <mat-option value="LTDA">Sociedade Limitada (LTDA)</mat-option>
+                <mat-option value="SLU">Sociedade Limitada Unipessoal (SLU)</mat-option>
+                <mat-option value="SA">Sociedade Anônima (S/A)</mat-option>
+            </mat-select>
+            <span *ngIf="formSubmitted && !empresa.naturezaJuridica" class="error-message">Este campo é obrigatório</span>
+          </mat-form-field>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-tab>
+      </mat-tab-group>
+      <mat-card-actions [align]="'end'">
+        <button mat-button routerLink="/lista-registros-prestador" class="button-action">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" class="button-action">Salvar</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  </form>
